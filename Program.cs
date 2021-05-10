@@ -20,11 +20,23 @@ namespace cowinvaccinecheck
                 new VaccineCheckInput(){Date ="11-05-2021", District="604",DistrictName="Sangareddy" },
                 new VaccineCheckInput(){Date ="12-05-2021", District="604",DistrictName="Sangareddy" }
             };
-            check(inputData);
+            var result = check(inputData);
+            if (result.Count == 0)
+            {
+                Console.WriteLine("Not available");
+            }
+            else
+            {
+                foreach (var r in result)
+                {
+                    Console.WriteLine(r);
+                }
+            }
         }
 
-        private static void check(List<VaccineCheckInput> input)
+        private static List<string> check(List<VaccineCheckInput> input)
         {
+            var result = new List<string>();
             foreach (var i in input)
             {
                 Console.WriteLine($"checking for the date {i.Date} and district {i.DistrictName}");
@@ -37,7 +49,7 @@ namespace cowinvaccinecheck
                 request.AlwaysMultipartFormData = true;
                 var response = client.Execute(request);
                 var data = JsonConvert.DeserializeObject<Rootobject>(response.Content);
-                var result = new List<string>();
+                
 
                 foreach (var c in data.centers)
                 {
@@ -55,20 +67,8 @@ namespace cowinvaccinecheck
                         }
                     }
                 }
-
-                if (result.Count == 0)
-                {
-                    Console.WriteLine("Not available");
-                }
-                else
-                {
-                    foreach (var r in result)
-                    {
-                        Console.WriteLine(r);
-                    }
-                }
             }
-
+            return result;
         }
     }
 
