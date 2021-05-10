@@ -27,7 +27,7 @@ namespace cowinvaccinecheck
         {
             foreach (var i in input)
             {
-                Console.WriteLine($"checking for the date {i.Date} and district {i.District}");
+                Console.WriteLine($"checking for the date {i.Date} and district {i.DistrictName}");
                 var vaccineDate = i.Date;
                 var vaccineDistrict = i.District;
                 var client = new RestClient($"https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByDistrict?district_id={vaccineDistrict}&date={vaccineDate}");
