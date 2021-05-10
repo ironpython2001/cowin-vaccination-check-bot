@@ -45,7 +45,8 @@ namespace cowinvaccinecheck
                     {
                         if (s.available_capacity > 0)
                         {
-                            result.Add($"{s.date} {c.name} {c.pincode}  {s.vaccine}");
+                            result.Add($"Date:{s.date},HospitalName:{c.name},PinCode:{c.pincode},Vaccine:{s.vaccine},Availability{s.available_capacity}");
+
                         }
                     }
                 }
@@ -65,6 +66,8 @@ namespace cowinvaccinecheck
 
         }
     }
+
+    
 
     public class VaccineCheckInput
     {
