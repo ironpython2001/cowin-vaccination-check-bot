@@ -4,12 +4,15 @@ using System.Net;
 using System.Linq;
 using System.Collections.Generic;
 using Newtonsoft.Json;
+using System.Threading.Tasks;
+using TextCopy;
+using System.Text;
 
 namespace cowinvaccinecheck
 {
     class Program
     {
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
             var inputData = new List<VaccineCheckInput>
             {
@@ -21,16 +24,21 @@ namespace cowinvaccinecheck
                 new VaccineCheckInput(){Date ="12-05-2021", District="604",DistrictName="Sangareddy" }
             };
             var result = check(inputData);
+            
             if (result.Count == 0)
             {
                 Console.WriteLine("Not available");
             }
             else
             {
+                var clipboardText =new StringBuilder();
                 foreach (var r in result)
                 {
                     Console.WriteLine(r);
+                    clipboardText.Append(r + Environment.NewLine);
+                    
                 }
+                await ClipboardService.SetTextAsync(clipboardText.ToString());
             }
         }
 
@@ -70,54 +78,6 @@ namespace cowinvaccinecheck
             }
             return result;
         }
-    }
-
-
-
-    public class VaccineCheckInput
-    {
-        public string Date { get; set; }
-        public string District { get; set; }
-        public string DistrictName { get; set; }
-    }
-
-    public class Rootobject
-    {
-        public Center[] centers { get; set; }
-    }
-
-    public class Center
-    {
-        public int center_id { get; set; }
-        public string name { get; set; }
-        public string address { get; set; }
-        public string state_name { get; set; }
-        public string district_name { get; set; }
-        public string block_name { get; set; }
-        public int pincode { get; set; }
-        public int lat { get; set; }
-        public int _long { get; set; }
-        public string from { get; set; }
-        public string to { get; set; }
-        public string fee_type { get; set; }
-        public Session[] sessions { get; set; }
-        public Vaccine_Fees[] vaccine_fees { get; set; }
-    }
-
-    public class Session
-    {
-        public string session_id { get; set; }
-        public string date { get; set; }
-        public int available_capacity { get; set; }
-        public int min_age_limit { get; set; }
-        public string vaccine { get; set; }
-        public string[] slots { get; set; }
-    }
-
-    public class Vaccine_Fees
-    {
-        public string vaccine { get; set; }
-        public string fee { get; set; }
     }
 
 }
