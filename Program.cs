@@ -13,12 +13,12 @@ namespace cowinvaccinecheck
         {
             var inputData = new List<VaccineCheckInput>
             {
-                new VaccineCheckInput(){Date ="10-05-2021", District="581",DistrictName="Hyderabad" },
                 new VaccineCheckInput(){Date ="11-05-2021", District="581",DistrictName="Hyderabad" },
-                new VaccineCheckInput(){Date ="10-05-2021", District="596",DistrictName="Medchal" },
+                new VaccineCheckInput(){Date ="12-05-2021", District="581",DistrictName="Hyderabad" },
                 new VaccineCheckInput(){Date ="11-05-2021", District="596",DistrictName="Medchal" },
-                new VaccineCheckInput(){Date ="10-05-2021", District="604",DistrictName="Sangareddy" },
-                new VaccineCheckInput(){Date ="11-05-2021", District="604",DistrictName="Sangareddy" }  
+                new VaccineCheckInput(){Date ="12-05-2021", District="596",DistrictName="Medchal" },
+                new VaccineCheckInput(){Date ="11-05-2021", District="604",DistrictName="Sangareddy" },
+                new VaccineCheckInput(){Date ="12-05-2021", District="604",DistrictName="Sangareddy" }
             };
             check(inputData);
         }
@@ -45,8 +45,12 @@ namespace cowinvaccinecheck
                     {
                         if (s.available_capacity > 0)
                         {
-                            result.Add($"Date:{s.date},HospitalName:{c.name},PinCode:{c.pincode},Vaccine:{s.vaccine},Availability{s.available_capacity}");
-
+                            result.Add($"Available Date:{s.date}");
+                            result.Add($"PinCode:{c.pincode},DistrictName:{i.DistrictName}");
+                            result.Add($"Vaccine:{s.vaccine}");
+                            result.Add($"HospitalName:{c.name}");
+                            result.Add($"No Of Available:{s.available_capacity}");
+                            result.Add("****************");     
                         }
                     }
                 }
@@ -67,7 +71,7 @@ namespace cowinvaccinecheck
         }
     }
 
-    
+
 
     public class VaccineCheckInput
     {
