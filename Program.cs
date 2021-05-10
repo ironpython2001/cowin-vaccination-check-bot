@@ -40,7 +40,8 @@ namespace cowinvaccinecheck
                     clipboardText.Append(r + Environment.NewLine);
                     
                 }
-                await ClipboardService.SetTextAsync(clipboardText.ToString());
+                //await ClipboardService.SetTextAsync(clipboardText.ToString());
+                await Task.FromResult(1);
             }
         }
 
