@@ -50,7 +50,8 @@ namespace cowinvaccinecheck
                             result.Add($"Vaccine:{s.vaccine}");
                             result.Add($"HospitalName:{c.name}");
                             result.Add($"No Of Available:{s.available_capacity}");
-                            result.Add("****************");     
+                            result.Add($"Fees:{c.fee_type}");
+                            result.Add("****************");
                         }
                     }
                 }
