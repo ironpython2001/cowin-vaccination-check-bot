@@ -23,7 +23,8 @@ namespace cowinvaccinecheck
                 new VaccineCheckInput(){Date ="11-05-2021", District="604",DistrictName="Sangareddy" },
                 new VaccineCheckInput(){Date ="12-05-2021", District="604",DistrictName="Sangareddy" },
                 new VaccineCheckInput(){Date ="11-05-2021", District="8",DistrictName="Visakhapatnam" },
-                new VaccineCheckInput(){Date ="12-05-2021", District="8",DistrictName="Visakhapatnam" }
+                new VaccineCheckInput(){Date ="12-05-2021", District="8",DistrictName="Visakhapatnam" },
+                new VaccineCheckInput(){Date ="12-05-2021", District="265",DistrictName="Banglore Urban" },
             };
             var result = check(inputData);
             
